@@ -4,9 +4,13 @@ import pandas as pd
 import streamlit as st
 import requests
 
+with open('dict_movies.pkl', 'rb') as f:
+    data = pickle.load(f)
+    movies = pd.DataFrame(data)
 
-movies_dict = pickle.load(open('movies_dict.pkl', 'rb'))
-movies = pd.DataFrame(movies_dict)
+
+# movies_dict = pickle.load(open('movies_dict.pkl', 'rb'))
+# movies = pd.DataFrame(movies_dict)
 
 st.title('Movie Recommender System')
 
@@ -15,7 +19,11 @@ selected_movie_name = st.selectbox(
     movies['title'].values
 )
 
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+
+with open('similarities.pkl', 'rb') as f:
+    similarity = pickle.load(f)
+
+# similarity = pickle.load(open('similarity.pkl', 'rb'))
 
 
 def fetch_poster(movie_id):
