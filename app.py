@@ -71,3 +71,5 @@ if st.button('Search'):
         st.text(names[4])
         st.image(posters[4])
 
+import requests
+print(requests.__version__)
